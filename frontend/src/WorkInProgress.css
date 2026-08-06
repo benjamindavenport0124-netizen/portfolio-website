@@ -1,0 +1,147 @@
+.wip-page {
+  min-height: 700px;
+  padding: 80px 32px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.wip-content {
+  flex: 3;
+  max-width: 700px;
+}
+
+.wip-label {
+  margin: 0 0 18px;
+  color: var(--accent-hover);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.wip-content h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.wip-description {
+  max-width: 600px;
+  margin: 28px 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.wip-progress {
+  width: 100%;
+  max-width: 520px;
+  height: 5px;
+  overflow: hidden;
+  background-color: var(--border-subtle);
+}
+
+.wip-progress-fill {
+  display: block;
+  width: 42%;
+  height: 100%;
+  background-color: var(--accent);
+}
+
+.wip-status {
+  margin: 12px 0 32px;
+  color: var(--text-secondary);
+  font-family: monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.wip-home-link {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.wip-home-link:hover {
+  background-color: var(--border-subtle);
+  border-color: var(--accent);
+}
+
+.wip-visual {
+  position: relative;
+  flex: 2;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+}
+
+.wip-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  aspect-ratio: 1;
+  border: 1px solid var(--accent);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.wip-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75%;
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: wip-orbit 10s linear infinite;
+}
+
+.wip-object {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 12px;
+  aspect-ratio: 1;
+  border: 2px solid var(--accent-hover);
+  background-color: var(--background);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes wip-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .wip-page {
+    min-height: auto;
+    padding: 64px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wip-content h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .wip-visual {
+    align-self: center;
+    max-width: 300px;
+  }
+}
