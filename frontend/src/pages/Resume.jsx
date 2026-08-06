@@ -3,6 +3,7 @@ import '../Resume.css'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import rocketimage from '../assets/b1b.png'
+import resumePdf from "../assets/BTDResume.pdf"
 import OllamaIcon from "../assets/icons/ollama.svg?react"
 import MayaIcon from "../assets/icons/Maya.svg?react"
 import AutoCADIcon from "../assets/icons/AutoCAD.svg?react"
@@ -41,7 +42,7 @@ function Resume() {
                </p>
                 <div className="resume-download">
                     <a
-                        href="/src/assets/BTDResume.pdf"
+                        href={resumePdf}
                         target="_blank"
                         rel="noopener noreferrer"
                     >⭳ Download Resume PDF</a>
