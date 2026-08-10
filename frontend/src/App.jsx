@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Resume from './pages/Resume.jsx'
 import Contact from './pages/Contact.jsx'
+import Projects from './pages/Projects.jsx'
 import WorkInProgress from './pages/WorkInProgress.jsx'
 import { Routes, Route } from 'react-router'
 
@@ -21,7 +22,7 @@ function App() {
 
       <Route
         path="/projects"
-        element={<WorkInProgress />}
+        element={<Projects />}
       />
 
       <Route
