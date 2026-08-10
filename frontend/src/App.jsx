@@ -25,6 +25,21 @@ function App() {
         element={<Projects />}
       />
 
+      <Route 
+        path="/projects/airanker"
+        element={<WorkInProgress />}
+      />
+
+      <Route 
+        path="/projects/voicecalculator"
+        element={<WorkInProgress />}
+      />
+
+      <Route 
+        path="/projects/aicoach"
+        element={<WorkInProgress />}
+      />
+
       <Route
         path="/resume"
         element={<Resume />}
