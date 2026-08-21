@@ -848,32 +848,32 @@
 }
 
 @media (min-width: 769px) {
-  .project-showcase {
+  .projects-showcase > .project-showcase {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
   }
 
-  .project-showcase > .project-info,
-  .project-showcase > .project-visual {
+  .projects-showcase > .project-showcase > .project-info,
+  .projects-showcase > .project-showcase > .project-visual {
     width: auto;
     min-width: 0;
     grid-row: 1;
   }
 
-  .project-showcase > .project-visual {
+  .projects-showcase > .project-showcase > .project-visual {
     grid-column: 1;
   }
 
-  .project-showcase > .project-info {
+  .projects-showcase > .project-showcase > .project-info {
     grid-column: 2;
   }
 
-  .project-showcase-reverse > .project-info {
+  .projects-showcase > .project-showcase-reverse > .project-info {
     grid-column: 1;
   }
 
-  .project-showcase-reverse > .project-visual {
+  .projects-showcase > .project-showcase-reverse > .project-visual {
     grid-column: 2;
   }
 }
