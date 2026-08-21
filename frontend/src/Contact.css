@@ -188,7 +188,7 @@
   line-height: 1.7;
 }
 
-/* Tablet */
+
 
 @media (max-width: 1000px) {
   .contact-hero-text h1 {
@@ -204,7 +204,7 @@
   }
 }
 
-/* Mobile */
+
 
 @media (max-width: 768px) {
   .contact-page {

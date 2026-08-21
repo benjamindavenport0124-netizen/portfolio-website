@@ -847,6 +847,38 @@
   font-size: 0.75rem;
 }
 
+@media (min-width: 769px) {
+  .project-showcase {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .project-showcase > .project-info,
+  .project-showcase > .project-visual {
+    width: auto;
+    min-width: 0;
+    grid-row: 1;
+  }
+
+  .project-showcase > .project-visual {
+    grid-column: 1;
+  }
+
+  .project-showcase > .project-info {
+    grid-column: 2;
+  }
+
+  .project-showcase-reverse > .project-info {
+    grid-column: 1;
+  }
+
+  .project-showcase-reverse > .project-visual {
+    grid-column: 2;
+  }
+}
+
+
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
@@ -895,14 +927,24 @@
   .solar-system {
     max-width: 340px;
   }
+  
   .projects-showcase {
     padding: 56px 20px;
     gap: 20px;
   }
 
   .project-showcase {
+    display: grid;
     grid-template-columns: 1fr;
     min-height: auto;
+  }
+
+  .project-showcase > .project-info,
+  .project-showcase > .project-visual {
+    width: auto;
+    min-width: 0;
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .project-info {
