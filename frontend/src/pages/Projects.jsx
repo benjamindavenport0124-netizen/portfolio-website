@@ -95,7 +95,7 @@ function Projects() {
                                 <NavLink className="project-link" to="/projects/airanker">View Details</NavLink>
                                 <a 
                                     className='project-github'
-                                    href="https://github.com/benjamindavenport0124-netizen"
+                                    href="https://github.com/benjamindavenport0124-netizen/AIvideoprocessor"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -168,7 +168,7 @@ function Projects() {
                                 <NavLink className="project-link" to="/projects/voicecalculator">View Details</NavLink>
                                 <a 
                                     className='project-github'
-                                    href="https://github.com/benjamindavenport0124-netizen"
+                                    href="https://github.com/benjamindavenport0124-netizen/voicecalculator"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

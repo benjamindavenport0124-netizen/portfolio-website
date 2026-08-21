@@ -79,7 +79,7 @@ main {
   box-shadow: 0 0 8px rgba(59,130,246,.45);
 }
 
-/* FEATURED PROJECTS */
+
 
 .project-showcase {
     display: flex;
@@ -132,7 +132,6 @@ main {
   background-size: 28px 28px;
 }
 
-/* Blueprint corner marks */
 
 .project-left::before,
 .project-left::after {
@@ -270,7 +269,8 @@ main {
 
   color: #5ee38d;
 
-  font-size: 1.4rem;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
   font-weight: 500;
 }
 
@@ -311,7 +311,6 @@ main {
   background-color: var(--background);
 }
 
-/* node positions */
 
 .ai-grid span:nth-child(1) {
   left: 0;
@@ -470,7 +469,7 @@ main {
   margin-top: 40px;
 }
 
-/* heading + line */
+
 
 .section-title {
   display: flex;
@@ -517,7 +516,6 @@ main {
 }
 
 
-/* cards */
 
 .project-other-grid {
   display: grid;
@@ -550,7 +548,7 @@ main {
 }
 
 
-/* icons */
+
 
 .project-card-icon {
   width: 30px;
@@ -564,7 +562,7 @@ main {
 }
 
 
-/* text */
+
 
 .project-card h3,
 .project-card-end h3 {
@@ -584,7 +582,7 @@ main {
 }
 
 
-/* link */
+
 
 .project-view {
   margin-top: auto;
@@ -602,27 +600,59 @@ main {
 }
 
 
-/* MOBILE */
+
 
 @media (max-width: 768px) {
   main {
-    margin: 22px;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 24px 16px;
+    box-sizing: border-box;
   }
 
   .project-header {
-    margin-top: 70px;
-    margin-bottom: 70px;
+    max-width: none;
+    margin: 48px 0 60px;
   }
 
   .project-header h1 {
-    font-size: 40px;
+    margin: 10px 0 18px;
+    font-size: clamp(2.3rem, 11vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .project-header p {
+    max-width: none;
+    line-height: 1.7;
+  }
+
+  .project-showcase,
+  .project-other,
+  .project-other-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .section-title {
+    gap: 12px;
+  }
+
+  .section-title h2 {
+    font-size: 0.8rem;
+  }
+
+  .section-dot {
+    left: 35px;
   }
 
   .project-feature {
-    grid-template-columns: 1fr;
-    gap: 30px;
-
-    padding: 22px;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    padding: 12px;
+    box-sizing: border-box;
   }
 
   .project-feature:nth-of-type(even) .project-left,
@@ -631,19 +661,73 @@ main {
   }
 
   .project-left {
-    min-height: 250px;
+    width: 100%;
+    min-width: 0;
+    min-height: 230px;
+    gap: 6px;
+    padding: 18px 12px;
+    box-sizing: border-box;
+  }
+
+  .diagram-node {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 100px;
+    padding: 10px 6px;
+  }
+
+  .diagram-node p {
+    font-size: 0.65rem;
+    overflow-wrap: anywhere;
+  }
+
+  .diagram-arrow {
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+
+  .diagram-output {
+    min-width: 0;
+  }
+
+  .project-right {
+    min-width: 0;
   }
 
   .project-right h1 {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
+    line-height: 1.15;
+  }
+
+  .project-right > p {
+    max-width: none;
+    font-size: 0.9rem;
+  }
+
+  .project-highlights {
+    min-width: 0;
+    padding-left: 0;
   }
 
   .project-buttons {
     flex-wrap: wrap;
   }
 
-  .project-other {
+  .project-link,
+  .project-github {
+    justify-content: center;
+  }
+
+  .project-other-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-card,
+  .project-card-end {
+    width: 100%;
+    min-height: 190px;
+    box-sizing: border-box;
   }
 
   .project-card-end {
