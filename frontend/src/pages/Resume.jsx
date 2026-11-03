@@ -1,322 +1,230 @@
-import { NavLink } from 'react-router'
-import '../Resume.css'
-import Navbar from '../components/Navbar.jsx'
-import Footer from '../components/Footer.jsx'
-import rocketimage from '../assets/b1b.png'
-import resumePdf from "../assets/BTDResume.pdf"
-import OllamaIcon from "../assets/icons/ollama.svg?react"
-import MayaIcon from "../assets/icons/Maya.svg?react"
-import AutoCADIcon from "../assets/icons/AutoCAD.svg?react"
-import RevitIcon from "../assets/icons/Revit.svg?react"
-import { FaPython } from "react-icons/fa";
-import { FaJava } from "react-icons/fa";
-import { SiJavascript } from "react-icons/si";
-import { SiReact } from "react-icons/si";
-import { SiVite } from "react-icons/si";
-import { SiGit } from "react-icons/si";
-import { SiGithub } from "react-icons/si";
-import { SiBlender } from "react-icons/si";
-import { SiLinux } from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
+import { Link } from "react-router";
 import {
-  Clapperboard,
+  Download,
+  ArrowRight,
+  ArrowUpRight,
   GraduationCap,
-  Mic,
-  Crosshair,
-  Globe,
-  Server
+  Code2,
+  Layers,
+  Terminal,
+  Box,
+  Briefcase,
 } from "lucide-react";
+import Blueprint from "../components/Blueprint.jsx";
+import { projectBySlug } from "../data/projects.js";
+import resumePdf from "../assets/BTDResume.pdf";
+import "../Resume.css";
 
-function Resume() {
+const skillGroups = [
+  { title: "Languages", icon: Code2, skills: ["Python", "Java", "JavaScript"] },
+  { title: "Frameworks & libraries", icon: Layers, skills: ["React", "Vite"] },
+  {
+    title: "Development & infrastructure",
+    icon: Terminal,
+    skills: ["Git", "GitHub", "VS Code", "Linux", "Ollama"],
+  },
+  {
+    title: "CAD & 3D modeling",
+    icon: Box,
+    skills: ["Blender", "AutoCAD", "Maya", "Revit"],
+  },
+];
+const certifications = [
+  ["Python Programming", "Python.pdf"],
+  ["Java Programming", "Java.pdf"],
+  ["JavaScript", "Javascript.pdf"],
+  ["AutoCAD Certified User", "AutoCAD.pdf"],
+];
+export default function Resume() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <section className='resume-header'>
-            <div className='resume-header-text'>
-               <h2 className='resume-headers'>Resume</h2>
-               <h1>Benjamin Davenport</h1>
-               <h2 className='header-sub'>Aspiring Aerospace Engineer & Software Developer</h2>
-               <p className='resume-norm-text'>
-                  I build AI tools and software that solve real problems. I'm driven by curiosity, a desire to learn, and a passion for engineering. 
-               </p>
-                <div className="resume-download">
-                    <a
-                        href={resumePdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >⭳ Download Resume PDF</a>
-                </div>
+    <main
+      className="page-container resume-page"
+      id="main-content"
+      tabIndex={-1}
+    >
+      <header className="resume-header">
+        <div className="resume-header-text">
+          <p className="eyebrow">Resume / the background behind the builds</p>
+          <h1>
+            Benjamin
+            <br />
+            Davenport.
+          </h1>
+          <p className="resume-subtitle">
+            Aspiring Aerospace Engineer
+            <br />& Software Developer
+          </p>
+          <p>
+            I build AI tools and software that solve real problems. I’m driven
+            by curiosity, a desire to learn, and a passion for engineering.
+          </p>
+          <a
+            className="button button-primary"
+            href={resumePdf}
+            download="Benjamin-Davenport-Resume.pdf"
+          >
+            <Download size={18} aria-hidden="true" /> Download resume{" "}
+            <span className="button-filetype">PDF</span>
+          </a>
+        </div>
+        <div className="resume-header-image">
+          <Blueprint />
+        </div>
+      </header>
+      <section className="resume-education" aria-labelledby="education-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / Education</p>
+            <h2 id="education-title">A foundation in progress.</h2>
+          </div>
+          <span className="resume-year">Class of 2027</span>
+        </div>
+        <div className="resume-school">
+          <GraduationCap size={30} aria-hidden="true" />
+          <div>
+            <h3>Magnolia High School</h3>
+            <p>Magnolia, Texas</p>
+          </div>
+        </div>
+        <dl className="resume-metrics">
+          <div>
+            <dt>Weighted GPA</dt>
+            <dd>5.0382</dd>
+          </div>
+          <div>
+            <dt>Unweighted GPA</dt>
+            <dd>3.8182</dd>
+          </div>
+          <div>
+            <dt>Class rank</dt>
+            <dd>
+              37<span> / 551</span>
+            </dd>
+          </div>
+          <div>
+            <dt>SAT scores</dt>
+            <dd>
+              1320<span> · 610 RW / 710 M</span>
+            </dd>
+            <dd className="resume-second-score">1300 · 560 RW / 740 M</dd>
+          </div>
+        </dl>
+      </section>
+      <div className="resume-columns">
+        <section className="resume-skills" aria-labelledby="skills-title">
+          <p className="eyebrow">02 / Skills</p>
+          <h2 id="skills-title">The technical toolkit.</h2>
+          {skillGroups.map(({ title, icon: Icon, skills }) => (
+            <div className="resume-skill-group" key={title}>
+              <h3>
+                <Icon size={18} aria-hidden="true" /> {title}
+              </h3>
+              <ul className="tag-list">
+                {skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
             </div>
-            <div className='resume-header-image'>
-              <img
-                src={rocketimage}
-                alt='Progression of crewed spacecraft'
-              />
-            </div>
+          ))}
+          <div className="resume-skill-group">
+            <h3>Across the projects</h3>
+            <p>
+              AI & machine learning · Problem solving · 3D modeling · System
+              design · Data processing · Linux server administration
+            </p>
+          </div>
         </section>
-        <section className='resume-education'>
-            <h2 className='resume-headers'>education</h2>
-            <div className='resume-school-row'>
-                <div className='resume-school-left'>
-                    <GraduationCap className="education-icon"/>
-                    <div className='resume-school'>
-                        <h2>Magnolia High School</h2>
-                        <h4>Magnolia, Texas</h4>
+        <section
+          className="resume-projects"
+          aria-labelledby="resume-projects-title"
+        >
+          <p className="eyebrow">03 / Applied learning</p>
+          <h2 id="resume-projects-title">Built, not just studied.</h2>
+          <div className="resume-work-list">
+            {["whale", "jarvis", "airanker", "voicecalculator", "aicoach"].map(
+              (slug) => {
+                const project = projectBySlug[slug];
+                return (
+                  <Link
+                    className="resume-project-item"
+                    key={slug}
+                    to={`/projects/${slug}`}
+                  >
+                    <div>
+                      <h3>{project.title}</h3>
+                      <p>{project.summary}</p>
                     </div>
-                </div>
-                <h2 className='resume-class'>Class of 2027</h2>
-            </div>
-            <div className='resume-numbers'>
-                <article>
-                    <p className='resume-norm-text'> GPA (Weighted)</p>
-                    <h2>5.0382</h2>
-                </article>
-                <article>
-                    <p className='resume-norm-text'> GPA (Unweighted)</p>
-                    <h2>3.8182</h2>
-                </article>
-                <article>
-                    <p className='resume-norm-text'> Class Rank</p>
-                    <h2>37/551</h2>
-                </article>
-                <article>
-                    <p className='resume-norm-text'> SAT Scores</p>
-                    <h2>1320 (610 RW / 710 M)</h2>
-                    <h2>1300 (560 RW / 740 M)</h2>
-                </article>
-            </div>
+                    <ArrowUpRight size={20} aria-hidden="true" />
+                  </Link>
+                );
+              },
+            )}
+          </div>
+          <Link className="text-link" to="/projects">
+            Explore all projects <ArrowRight size={17} aria-hidden="true" />
+          </Link>
         </section>
-        <section className='resume-skills-projects'>
-            <section className='resume-skills'>
-                <h2 className='resume-headers'>Technical skills</h2>
-                <h2>Languages</h2>
-                <div className='resume-languages'>
-                    <article className="resume-skill">
-                        <FaPython />
-                        <span>Python</span>
-                    </article>
-                    <article className="resume-skill">
-                        <FaJava />
-                        <span>Java</span>
-                    </article>
-                    <article className="resume-skill">
-                        <SiJavascript />
-                        <span>JavaScript</span>
-                    </article>
-                </div>
-                <h2>Frameworks & Libraries</h2>
-                <div className='resume-frame'>
-                    <article className="resume-skill">
-                        <SiReact />
-                        <span>React</span>
-                    </article>
-                    <article className="resume-skill">
-                        <SiVite />
-                        <span>Vite</span>
-                    </article>
-                </div>
-                <h2>Development Tools</h2>
-                <div className='resume-tools'>
-                    <article className="resume-skill">
-                        <SiGit />
-                        <span>Git</span>
-                    </article>
-                    <article className="resume-skill">
-                        <SiGithub />
-                        <span>GitHub</span>
-                    </article>
-                    <article className="resume-skill">
-                        <VscVscode />
-                        <span>VS Code</span>
-                    </article>
-                    <article className="resume-skill">
-                        <SiLinux />
-                        <span>Linux</span>
-                    </article>
-                    <article className="resume-skill">
-                        <OllamaIcon className="resume-icon"/>
-                        <span>Ollama</span>
-                    </article>
-                </div>
-                <h2>3D Modeling Tools</h2>
-                <div className="resume-3d">
-                    <article className="resume-skill">
-                        <SiBlender />
-                        <span>Blender</span>
-                    </article>
-                    <article className="resume-skill">
-                        <AutoCADIcon className="resume-icon"/>
-                        <span>AutoCAD</span>
-                    </article>
-                    <article className="resume-skill">
-                        <MayaIcon className="resume-icon"/>
-                        <span>Maya</span>
-                    </article>
-                    <article className="resume-skill">
-                        <RevitIcon className="resume-icon"/>
-                        <span>Revit</span>
-                    </article>
-                </div>
-                <h2>Other Skills</h2>
-                <div className="resume-other">
-                    <span>AI & Machine Learning</span>
-                    <span>Problem Solving</span>
-                    <span>3D Modeling</span>
-                    <span>System Design</span>
-                    <span>Data Processing</span>
-                    <span>Linux Server Administration</span>
-                </div>
-            </section>
-            <section className='resume-projects'>
-                <h2 className='resume-headers'>Featured Projects</h2>
-            
-                <article className="resume-project-item">
-                    <div className="resume-project-icon">
-                        <Clapperboard />
-                    </div>
-            
-                    <div className="resume-project-info">
-                        <h2>AI Video Ranker</h2>
-                        <p>
-                            Local AI pipeline that analyzes long Minecraft recordings using speech transcripts and game logs to automatically rank the most important moments.
-                        </p>
-                    </div>
-                        
-                    <NavLink
-                        className="resume-project-link"
-                        to="/projects/ai-video-ranker"
-                    >
-                        View Project →
-                    </NavLink>
-                </article>
-            
-                <article className="resume-project-item">
-                    <div className="resume-project-icon">
-                        <Mic />
-                    </div>
-            
-                    <div className="resume-project-info">
-                        <h2>Voice Calculator</h2>
-                        <p>
-                            A voice-controlled calculator capable of solving complex expressions including fractions, logarithms, and trigonometric functions using speech recognition.
-                        </p>
-                    </div>
-            
-                   <NavLink
-                        className="resume-project-link"
-                        to="/projects/voice-calculator"
-                    >
-                        View Project →
-                    </NavLink>
-                </article>
-            
-                <article className="resume-project-item">
-                    <div className="resume-project-icon">
-                        <Crosshair />
-                    </div>
-            
-                   <div className="resume-project-info">
-                        <h2>AI FPS Coach</h2>
-                        <p>
-                            AI tool that analyzes gameplay screenshots and provides real-time feedback on positioning, crosshair placement, and decision making.
-                        </p>
-                    </div>
-            
-                    <NavLink
-                        className="resume-project-link"
-                        to="/projects/ai-coach"
-                    >
-                        View Project →
-                    </NavLink>
-                </article>
-            
-                <article className="resume-project-item">
-                    <div className="resume-project-icon">
-                        <Globe />
-                    </div>
-            
-                    <div className="resume-project-info">
-                        <h2>Portfolio Website</h2>
-                        <p>
-                            Designed and developed this portfolio website using React and Vite to showcase my projects, skills, and experience.
-                        </p>
-                    </div>
-            
-                    <NavLink
-                        className="resume-project-link"
-                        to="/projects/website"
-                    >
-                        View Project →
-                    </NavLink>
-                </article>
-            
-                <article className="resume-project-item">
-                    <div className="resume-project-icon">
-                        <Server />
-                    </div>
-            
-                    <div className="resume-project-info">
-                        <h2>Local AI Server</h2>
-                        <p>
-                            Built and configured a local Ubuntu server with an NVIDIA GPU to run and experiment with large language models using Ollama.
-                        </p>
-                    </div>
-            
-                    <NavLink
-                        className="resume-project-link"
-                        to="/projects/ai-server"
-                    >
-                        View Project →
-                    </NavLink>
-                </article>
-            </section>
+      </div>
+      <section className="resume-experience" aria-labelledby="experience-title">
+        <p className="eyebrow">04 / Experience</p>
+        <h2 id="experience-title">Learning beyond the screen.</h2>
+        <div className="resume-job">
+          <div>
+            <Briefcase size={24} aria-hidden="true" />
+            <h3>Chick-fil-A</h3>
+            <p>Kitchen Team Member</p>
+            <p className="resume-job-date">
+              August 2025 – March 2026
+              <br />
+              Magnolia, Texas
+            </p>
+          </div>
+          <ul>
+            <li>
+              Worked in a fast-paced environment while maintaining accuracy and
+              efficiency.
+            </li>
+            <li>
+              Collaborated with team members to ensure excellent customer
+              service.
+            </li>
+            <li>
+              Developed strong time management and problem-solving skills.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div className="resume-bottom-grid">
+        <section>
+          <p className="eyebrow">05 / Beyond the classroom</p>
+          <h2>Activities & achievements</h2>
+          <ul className="resume-achievements">
+            <li>National Honor Society Member</li>
+            <li>UIL Computer Science Team Member</li>
+            <li>5th Place – UIL Computer Science Invitational</li>
+            <li>36+ Volunteer Hours Completed</li>
+          </ul>
         </section>
-        <section className='resume-jobs'>
-            <h2 className='resume-headers'>experience</h2>
-            <div className='resume-chickfila'>
-                <div className='chickfila-left'>
-                    <h2>Chick-fil-A</h2>
-                    <p>Kitchen Team Member</p>
-                    <h5>August 2025 – March 2026 · Magnolia, Texas</h5>
-                </div>
-                <ul className='chickfila-right'>
-                    <li>
-                        Worked in a fast-paced environment while maintaining accuracy and efficiency.
-                    </li>
-                    <li>
-                        Collaborated with team members to ensure excellent customer service.
-                    </li>
-                    <li>
-                        Developed strong time management and problem-solving skills.
-                    </li>
-                </ul>
-            </div>
+        <section>
+          <p className="eyebrow">06 / Credentials</p>
+          <h2>Certifications</h2>
+          <ul className="resume-certifications">
+            {certifications.map(([name, file]) => (
+              <li key={name}>
+                <a
+                  href={`/certifications/${file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {name}
+                  <ArrowUpRight size={17} aria-hidden="true" />
+                  <span className="sr-only"> (PDF, opens in new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
-        <section className='resume-activities-certifications'>
-            <section className='resume-activities'>
-                <h2 className='resume-headers'>ACTIVITIES & ACHIEVEMENTS</h2>
-                <ul>
-                    <li>National Honor Society Member</li>
-                    <li>UIL Computer Science Team Member</li>
-                    <li>5th Place – UIL Computer Science Invitational</li>
-                    <li>36+ Volunteer Hours Completed</li>
-                </ul>
-            </section>
-            <section className='resume-certifications'>
-                <h2 className='resume-headers'>CERTIFICATIONS</h2>
-                <ul>
-                    <li>Python Programming Certification</li>
-                    <li>Java Programming Certification</li>
-                    <li>JavaScript Certification</li>
-                    <li>AutoCAD Certified User</li>
-                </ul>
-            </section>
-        </section>
-      </main>
-      <Footer />
-    </>
-  )
+      </div>
+    </main>
+  );
 }
-
-export default Resume

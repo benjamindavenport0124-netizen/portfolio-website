@@ -1,0 +1,56 @@
+# Dependencies and generated output
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vercel/
+*.tsbuildinfo
+
+# Local configuration and logs
+.env
+.env.*
+!.env.example
+.envrc
+*.local
+logs/
+*.log
+
+# Credentials and private keys
+.ssh/
+.aws/
+.npmrc
+.netrc
+.secrets/
+credentials.json
+secrets.json
+service-account*.json
+client_secret*.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local databases and backup files
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.db
+*.db-*
+*.sql
+*.sql.gz
+*.bak
+*.backup
+*~
+
+# Editor and operating-system files
+**/.vscode/*
+!**/.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

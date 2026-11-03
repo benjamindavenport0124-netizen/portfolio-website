@@ -1,268 +1,137 @@
+import { Link } from "react-router";
+import { ArrowRight, ArrowUpRight, FileCode, Check } from "lucide-react";
+import Hero from "../components/Hero.jsx";
+import ProjectVisual from "../components/ProjectVisual.jsx";
+import ProjectCard from "../components/ProjectCard.jsx";
+import { projectBySlug } from "../data/projects.js";
+import "../Home.css";
 
-import Navbar from '../components/Navbar.jsx'
-import Footer from '../components/Footer.jsx'
-import Hero from '../components/Hero.jsx'
-import { Link } from 'react-router'
-
-function Home() {
+const certificates = [
+  ["Python", "CodeHS", "Python.pdf"],
+  ["Java", "CodeHS", "Java.pdf"],
+  ["JavaScript", "CodeHS", "Javascript.pdf"],
+  ["AutoCAD", "Certiport credential", "AutoCAD.pdf"],
+];
+export default function Home() {
   return (
-    <>
-
-      <Navbar />
-    
-      <main>
-        <Hero />
-
-
-        <section className="tech-stack">
-          <p className="tech-title">Technologies & Tools</p>
-          <div className="tech-list">
-            <span>Python</span>
-            <span>Java</span>
-            <span>JavaScript</span>
-            <span>Git</span>
-            <span>VS Code</span>
-            <span>AutoCAD</span>
-            <span>Blender</span>
-            <span>Revit</span>
-            <span>Maya</span>
+    <main className="page-container home-page" id="main-content" tabIndex={-1}>
+      <Hero />
+      <section className="home-tools" aria-label="Technologies and tools">
+        <p className="eyebrow">The tools behind the ideas</p>
+        <ul>
+          {[
+            "Python",
+            "Java",
+            "JavaScript",
+            "React",
+            "Git",
+            "Ubuntu",
+            "AutoCAD",
+            "Blender",
+            "Revit",
+            "Maya",
+          ].map((tool) => (
+            <li key={tool}>{tool}</li>
+          ))}
+        </ul>
+      </section>
+      <section className="home-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">In the workshop</p>
+            <h2>What I’m building now.</h2>
           </div>
-        </section>
-
-        <section className="projects-showcase">
-          <article className="project-showcase">
-            <div className="project-visual">
-              <div className="voice-visual">
-              <div className="voice-input">
-                <div className="mic-circle">
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    className="mic-icon"
-                  >
-                    <rect x="9" y="2" width="6" height="12" rx="3" />
-                    <path d="M5 10a7 7 0 0 0 14 0" />
-                    <path d="M12 17v5" />
-                    <path d="M8 22h8" />
-                  </svg>
-                </div>
-
-                <div className="waveform" aria-hidden="true">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-
-              <div className="voice-equations">
-                <p className="equation-label">Recognized input</p>
-
-                <p className="equation-text">
-                  sin(30°) + log(100)
-                </p>
-
-                <p className="equation-spoken">
-                  “Sine of open thirty close plus log of open one hundred close"
-                </p>
-              </div>
-
-              <div className="voice-output">
-                <p className="output-label">Calculated result</p>
-                <output className="calculator-result">2.5</output>
-
-                <div className="mini-keypad" aria-hidden="true">
-                  <span>7</span>
-                  <span>8</span>
-                  <span>9</span>
-                  <span>÷</span>
-
-                  <span>4</span>
-                  <span>5</span>
-                  <span>6</span>
-                  <span>×</span>
-
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
-                 <span>+</span>
-                </div>
-              </div>
-              </div>
-            </div>
-
-            <div className="project-info">
-              <p className="project-label">Featured Project</p>
-              <h2 className="project-name">Voice Calculator</h2>
-
-              <p className="project-description">
-                A Python calculator that converts spoken math problems into answers, supporting functions such as fractions, logarithms, and trigonometry. I built it to explore speech recognition and make complex calculations easier to enter.
-              </p>
-              <div className="project-tags">
-                <span>Python</span>
-                <span>Speech Recognition</span>
-                <span>Math Parsing</span>
-              </div>
-              <Link className="project-link" to="/projects/voice-calculator">
-                View Project →
-              </Link>
-            </div>
-          </article>
-          <article className="project-showcase project-showcase-reverse">
-            <div className="project-info">
-              <p className="project-label">Featured Project</p>
-              <h2 className="project-name">AI Video Ranker</h2>
-
-              <p className="project-description">
-                A local AI pipeline that analyzes long Minecraft recordings, combines speech transcripts with game logs, and ranks important moments for video editing. It turns hours of footage into a useful list of highlights and timestamps.
-              </p>
-              <div className="project-tags">
-                <span>Python</span>
-                <span>Whisper</span>
-                <span>Ollama</span>
-                <span>Game Log Parsing</span>
-                <span>OCR</span>
-              </div>
-              <Link className="project-link" to="/projects/ai-lab">
-                View Project →
-              </Link>
-            </div>
-            <div className="project-visual">
-              <div className="ranker-visual">
-               <div className="pipeline-flow">
-                 <div className="pipeline-step">
-                   <span className="step-number">01</span>
-                   <strong>Footage</strong>
-                   <small>Video and audio</small>
-                 </div>
-
-                 <span className="pipeline-arrow">→</span>
-
-                 <div className="pipeline-step">
-                   <span className="step-number">02</span>
-                   <strong>Extract Data</strong>
-                   <small>Whisper, logs, and OCR</small>
-                 </div>
-
-                 <span className="pipeline-arrow">→</span>
-
-                 <div className="pipeline-step">
-                                <span className="step-number">03</span>
-                   <strong>AI Analysis</strong>
-                   <small>Score each moment</small>
-                 </div>
-
-                 <span className="pipeline-arrow">→</span>
-
-                 <div className="pipeline-step">
-                   <span className="step-number">04</span>
-                   <strong>Highlights</strong>
-                   <small>Ranks and timestamps</small>
-                 </div>
-               </div>
-               <div className="ranking-preview">
-                 <p className="ranking-title">Example ranked output</p>
-
-                 <div className="ranking-row">
-                   <span className="ranking-number">01</span>
-                   <strong>Crazy Rare Drop</strong>
-                   <span className="ranking-priority">High priority</span>
-                 </div>
-
-                 <div className="ranking-row">
-                   <span className="ranking-number">02</span>
-                   <strong>Level Up</strong>
-                   <span className="ranking-priority">High priority</span>
-                 </div>
-
-                 <div className="ranking-row">
-                   <span className="ranking-number">03</span>
-                   <strong>Rare Chest Reward</strong>
-                   <span className="ranking-priority">Review</span>
-                 </div>
-               </div>
-             </div>
-            </div>
-            
-          </article>
-        </section>
-      
-        <section className="certifications">
-          <h2 className="certification-title">Certifications</h2>
-
-          <div className="certification-list">
-            <a
-              href="/certifications/Python.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="certification-card"
-            >
-              <span className="certificate-code">PY</span>
-
-              <div className="certificate-info">
-                <strong>Python</strong>
-                <span>CodeHS</span>
-              </div>
-
-              <span className="certificate-arrow">↗</span>
-            </a>
-
-            <a
-              href="/certifications/Java.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="certification-card"
-            >
-              <span className="certificate-code">JAVA</span>
-        
-              <div className="certificate-info">
-                <strong>Java</strong>
-                <span>CodeHS</span>
-              </div>
-        
-              <span className="certificate-arrow">↗</span>
-            </a>
-        
-            <a
-              href="/certifications/Javascript.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="certification-card"
-            >
-              <span className="certificate-code">JS</span>
-        
-              <div className="certificate-info">
-                <strong>JavaScript</strong>
-                <span>CodeHS</span>
-              </div>
-
-              <span className="certificate-arrow">↗</span>
-            </a>
-            <a
-              href="/certifications/AutoCAD.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="certification-card"
-            >
-              <span className="certificate-code">CAD</span>
-        
-              <div className="certificate-info">
-                <strong>AutoCAD</strong>
-                <span>Certiport credential</span>
-              </div>
-
-              <span className="certificate-arrow">↗</span>
-            </a>
+          <Link className="text-link" to="/projects">
+            All projects <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="detail-related-grid">
+          <ProjectCard project={projectBySlug.whale} />
+          <ProjectCard project={projectBySlug.jarvis} />
+        </div>
+      </section>
+      <section className="home-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Selected work</p>
+            <h2>Curiosity, put into practice.</h2>
           </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
-  )
+        </div>
+        <div className="home-feature-list">
+          {["voicecalculator", "airanker"].map((slug, index) => {
+            const project = projectBySlug[slug];
+            return (
+              <article className="home-feature" key={slug}>
+                <div className="home-feature-art">
+                  <ProjectVisual slug={slug} />
+                </div>
+                <div className="home-feature-copy">
+                  <p className="eyebrow">
+                    0{index + 1} / {project.category}
+                  </p>
+                  <h3>{project.title}</h3>
+                  <p>
+                    {slug === "voicecalculator"
+                      ? "An AP Computer Science project built around a simple idea: enter mathematics just by talking. Custom parsing keeps nested equations intact, with support for calculus and symbolic operations."
+                      : "A self-hosted pipeline that combines commentary, Minecraft logs, and local AI to find useful moments in long recordings. Ranked results give the editor a starting point."}
+                  </p>
+                  <ul className="tag-list">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                  <Link className="text-link" to={`/projects/${slug}`}>
+                    Explore the project{" "}
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+      <section className="home-section home-certifications">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">A foundation to build on</p>
+            <h2>Learning, with something to show.</h2>
+          </div>
+        </div>
+        <div className="certificate-grid">
+          {certificates.map(([name, issuer, file]) => (
+            <a
+              key={name}
+              className="certificate-card"
+              href={`/certifications/${file}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FileCode size={24} aria-hidden="true" />
+              <div>
+                <h3>{name}</h3>
+                <p>
+                  <Check size={13} aria-hidden="true" /> {issuer}
+                </p>
+              </div>
+              <ArrowUpRight size={18} aria-hidden="true" />
+              <span className="sr-only"> (PDF, opens in new tab)</span>
+            </a>
+          ))}
+        </div>
+      </section>
+      <aside className="home-contact">
+        <div>
+          <p className="eyebrow">Ideas are better shared</p>
+          <h2>Let’s build a conversation.</h2>
+          <p>
+            Engineering, software, or an interesting problem—I’d love to hear
+            about it.
+          </p>
+        </div>
+        <Link className="button button-secondary" to="/contact">
+          Get in touch <ArrowRight size={18} aria-hidden="true" />
+        </Link>
+      </aside>
+    </main>
+  );
 }
-
-export default Home
