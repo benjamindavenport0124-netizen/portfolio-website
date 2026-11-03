@@ -54,3 +54,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Local design backups
+/assets/backups/

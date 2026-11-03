@@ -45,7 +45,7 @@ frontend/
     pages/                Home, about, projects, resume, contact, and AI Lab
     App.jsx               Routes, legacy redirects, titles, and focus handling
     index.css             Global design tokens and shared styles
-assets/backups/resume/    Original resume artwork retained as design backups
+assets/backups/resume/    Local-only resume artwork backups (ignored by Git)
 ```
 
 ## Updating project content
@@ -57,7 +57,8 @@ the corresponding entry. Legacy URLs redirect to the existing canonical slugs.
 
 The resume text is in `frontend/src/pages/Resume.jsx`; its downloadable PDF is
 `frontend/src/assets/BTDResume.pdf`. Certificates are in
-`frontend/public/certifications/`.
+`frontend/public/certifications/`. The AutoCAD PDF is a privacy-redacted exam
+result; keep its personal identifiers and detailed scores out of public copies.
 
 ## Adding project photos
 
@@ -86,7 +87,16 @@ custom name or caption. Choose one cover per project. `fit: "contain"` keeps
 wide diagrams fully visible in card thumbnails.
 
 The code illustrations remain available for projects without photos and as
-fallbacks when a cover fails to load. Original photo files are retained.
+fallbacks when a cover fails to load. Original filenames and image pixels are
+preserved; private capture metadata is removed before publication.
+
+Before adding photos, remove GPS, device details, timestamps, embedded previews,
+and EXIF/XMP metadata. `npm test` checks PNG and JPEG project uploads for common
+private metadata blocks. Inspect and sanitize other formats separately. Review
+PDF contents for identifiers as well as metadata before publishing them.
+
+`assets/backups/` is ignored and stays local. Do not place private originals or
+full-site archives in the public asset directories.
 
 ## Hosting
 
